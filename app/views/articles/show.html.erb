@@ -1,8 +1,12 @@
 <h1><%= @article.title %></h1>
 <p><%= @article.body %></p>
 
+<br />
+<%= link_to "Edit", edit_article_path(@article) %>
+
 <br/>
 <%= link_to "Delete Article", article_path(@article),
       :method => :delete, :confirm =>  "Do you really want to delete #{@article.title}?"%>
+
 <br/>
 <%= link_to "<< Back to Articles List", articles_path %>

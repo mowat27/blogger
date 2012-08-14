@@ -14,13 +14,13 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(params[:article])
     @article.save
-
-    redirect_to article_path(@article)
+    redirect_to article_path(@article), :notice => "#{@article.title} was created"
   end
 
   def destroy
-    Article.find(params[:id]).destroy
-    redirect_to articles_path
+    @article = Article.find(params[:id])
+    @article.destroy
+    redirect_to articles_path, :notice => "#{@article.title} was deleted"
   end
 
   def edit
@@ -31,6 +31,6 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.update_attributes(params[:article])
 
-    redirect_to articles_path
+    redirect_to articles_path, :notice => "#{@article.title} was updated"
   end
 end

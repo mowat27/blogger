@@ -13,8 +13,12 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(params[:article])
-    @article.save
-    redirect_to article_path(@article), :notice => "#{@article.title} was created"
+    if @article.save
+      redirect_to article_path(@article), :notice => "#{@article.title} was created"
+    else
+      flash[:alert] = "Please fix the errors below"
+      render :new
+    end
   end
 
   def destroy
@@ -29,8 +33,11 @@ class ArticlesController < ApplicationController
 
   def update
     @article = Article.find(params[:id])
-    @article.update_attributes(params[:article])
-
-    redirect_to articles_path, :notice => "#{@article.title} was updated"
+    if @article.update_attributes(params[:article])
+      redirect_to articles_path, :notice => "#{@article.title} was updated"
+    else
+      flash[:alert] = "Please fix the errors below"
+      render :edit
+    end
   end
 end

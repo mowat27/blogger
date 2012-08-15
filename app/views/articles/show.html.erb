@@ -5,10 +5,13 @@
 <%= link_to "Edit", edit_article_path(@article) %>
 
 <br/>
-<%= link_to "Delete Article", article_path(@article),
+<%= link_to "Delete", article_path(@article),
       :method => :delete, :confirm =>  "Do you really want to delete #{@article.title}?"%>
-
 <br/>
+
+<p>
+  Tags: <%= tag_links(@article.tags) %>
+</p>
 
 <h2><%= @article.comments.count %> Comments</h2>
 

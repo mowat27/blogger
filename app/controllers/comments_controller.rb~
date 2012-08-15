@@ -1,0 +1,5 @@
+class CommentsController < ApplicationContoller
+  def create
+
+  end
+end

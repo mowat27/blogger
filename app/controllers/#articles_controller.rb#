@@ -4,9 +4,6 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    session[:hit_count] ||= 0
-    session[:hit_count] += 1
-    
     @article = Article.find(params[:id])
     @comment = Comment.new
   end

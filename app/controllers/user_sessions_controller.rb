@@ -12,4 +12,9 @@ class UserSessionsController < ApplicationController
       render :new
     end
   end
+
+  def destroy
+    session.delete :user_id
+    redirect_to articles_path, :notice => "Come back soon!"
+  end
 end

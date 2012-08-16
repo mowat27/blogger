@@ -1,0 +1,8 @@
+<% if model.errors.any? %>
+  <p>The <%= model.human_readable_name %> could not be saved for the following reasons</p>
+  <ul>
+    <% model.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+   </ul>
+<% end %>
